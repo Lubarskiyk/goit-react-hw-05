@@ -1,0 +1,13 @@
+.reviewList{
+    display: flex;
+    flex-direction: column;
+    gap:20px;
+}
+
+.text + .text{
+    margin-top: 0.5rem;
+}
+
+.reviewItem{
+    border-bottom: 1px solid #F3F3F3;
+}

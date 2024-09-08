@@ -1,0 +1,14 @@
+.detail{
+    display: flex;
+    gap: 20px;
+}
+.image{
+    width: 250px;
+    aspect-ratio: 100/150;
+    margin-bottom: 30px;
+}
+
+.genresList{
+    display: flex;
+    gap:20px;
+}

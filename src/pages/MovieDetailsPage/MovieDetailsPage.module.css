@@ -1,0 +1,11 @@
+.detail {
+  display: flex;
+  gap: 20px;
+}
+
+.aboutList {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+    margin-left: 50px;
+}
