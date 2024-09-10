@@ -6,12 +6,18 @@ export default function Navigation() {
       <nav>
         <ul className={css.nav}>
           <li>
-            <NavLink to="/" className={css.link}>
+            <NavLink
+              to="/"
+              className={({ isActive }) => (isActive ? css.active : css.link)}
+            >
               Home
             </NavLink>
           </li>
           <li>
-            <NavLink to="/movies" className={css.link}>
+            <NavLink
+              to="/movies"
+              className={({ isActive }) => (isActive ? css.active : css.link)}
+            >
               Movies
             </NavLink>
           </li>

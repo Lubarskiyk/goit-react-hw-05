@@ -15,3 +15,17 @@
   padding-top: 10px;
   padding-bottom: 10px;
 }
+
+.active{
+  composes: link;
+  color: red;
+
+  transform: scale(1);
+  pointer-events: none;
+
+}
+
+.link:hover,
+.link:focus {
+  color: orangered;
+}

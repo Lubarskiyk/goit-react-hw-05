@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import { getMoviesSearch } from "../../api/movi-api.js";
 import MoviesList from "../../components/MoviesList/MoviesList.jsx";
 import { useSearchParams } from "react-router-dom";
+import css from "./MoviesPage.module.css";
+import { toast, Toaster } from "react-hot-toast";
 
 export default function MovePage() {
   const [loading, setLoading] = useState(false);
@@ -23,7 +25,7 @@ export default function MovePage() {
         const res = await getMoviesSearch(search);
         setMovies(res.results);
       } catch (error) {
-        console.log(error);
+        toast.error("OPS!!! ");
         setError(true);
       } finally {
         setLoading(false);
@@ -46,20 +48,22 @@ export default function MovePage() {
           actions.resetForm();
         }}
       >
-        <Form>
+        <Form className={css.form}>
           <Field
             type="text"
             name="query"
             autoComplete="off"
             autoFocus
-            placeholder="Search images and photos"
+            placeholder="Search movies"
+            className={css.input}
           />
 
-          <button type="submit">
+          <button type="submit" className={css.button}>
             <FiSearch size="16px" />
           </button>
         </Form>
       </Formik>
+      {error && <Toaster position="top-right" reverseOrder={false} />}
       <MoviesList movies={movies} />
     </>
   );

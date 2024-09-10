@@ -10,6 +10,7 @@ import {
 import Loader from "../../components/Loader/Loader.jsx";
 import css from "./MovieDetailsPage.module.css";
 import MovieDetails from "../../components/MovieDetails/MovieDetails.jsx";
+import { toast, Toaster } from "react-hot-toast";
 
 export default function MovieDetailsPage() {
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ export default function MovieDetailsPage() {
         const res = await getMoviesDetails(movieId);
         setMoviesDetails(res);
       } catch (error) {
+        toast.error("OPS!!! ");
         setError(true);
         console.log(error);
       } finally {
@@ -39,6 +41,7 @@ export default function MovieDetailsPage() {
   return (
     <div>
       <Link to={url.current}> Back</Link>
+      {error && <Toaster position="top-right" reverseOrder={false} />}
       {loading ? (
         <Loader />
       ) : (
