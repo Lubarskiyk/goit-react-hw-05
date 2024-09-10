@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getMoviesDetails } from "../../api/movi-api.js";
 import {
   Link,
@@ -17,7 +17,7 @@ export default function MovieDetailsPage() {
   const [moviesDetails, setMoviesDetails] = useState(null);
   const { movieId } = useParams();
   const location = useLocation();
-  const url = `${location.state.pathname}${location.state.search}`;
+  const url = useRef(location.state ?? "/");
 
   useEffect(() => {
     async function fetchMoviesDetails() {
@@ -38,7 +38,7 @@ export default function MovieDetailsPage() {
 
   return (
     <div>
-      <Link to={url}> Back</Link>
+      <Link to={url.current}> Back</Link>
       {loading ? (
         <Loader />
       ) : (
