@@ -2,14 +2,14 @@ import { useEffect, useState } from "react";
 import { getMoviesReviews } from "../../api/movi-api.js";
 import Loader from "../../components/Loader/Loader.jsx";
 import css from "./MovieReviews.module.css";
-import { useOutletContext } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 export default function MovieReviews() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [moviesReviews, setMoviesReviews] = useState([]);
-  const movieId = useOutletContext();
 
+  const { movieId } = useParams();
   useEffect(() => {
     if (moviesReviews.length > 0) {
       return;
@@ -29,7 +29,7 @@ export default function MovieReviews() {
       }
     }
     fetchMoviesReviews();
-  }, []);
+  }, [movieId]);
 
   return loading ? (
     <Loader />

@@ -1,15 +1,14 @@
 import { useEffect, useState } from "react";
 import { getMoviesReviews } from "../../api/movi-api.js";
 import Loader from "../../components/Loader/Loader.jsx";
-
-import { useOutletContext } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import css from "./MovieCast.module.css";
 
 export default function MovieCast() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(false);
   const [moviesCast, setMoviesCast] = useState([]);
-  const movieId = useOutletContext();
+  const { movieId } = useParams();
 
   useEffect(() => {
     if (!moviesCast) {
@@ -29,7 +28,7 @@ export default function MovieCast() {
       }
     }
     fetchMoviesCast();
-  }, []);
+  }, [movieId]);
 
   return loading ? (
     <Loader />
@@ -52,6 +51,6 @@ export default function MovieCast() {
       ))}
     </ul>
   ) : (
-    <p>Not</p>
+    <p>Not Reviews</p>
   );
 }

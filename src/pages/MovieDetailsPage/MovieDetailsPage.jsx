@@ -36,7 +36,7 @@ export default function MovieDetailsPage() {
       }
     }
     fetchMoviesDetails();
-  }, []);
+  }, [movieId]);
 
   return (
     <div>
@@ -56,7 +56,7 @@ export default function MovieDetailsPage() {
           <NavLink to="cast">Cast</NavLink>
         </li>
       </ul>
-      <Outlet context={movieId} />
+      <Outlet />
     </div>
   );
 }
